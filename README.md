@@ -293,3 +293,39 @@ Não publique workflows, não faça envios de WhatsApp e não modifique credenci
 - [POP 005 — Exia (Google Docs)](https://docs.google.com/document/d/1it3FQwCw9aZP7e32jzaxiRgjyP8xvo-BIYo7tE-VT40/edit)
 
 **Estado:** este README documenta instalação e uso. A presença real dos arquivos de bases e skills privadas deve ser conferida no repositório; não se deve declarar instalação ou homologação concluída antes das verificações.
+
+
+---
+
+## 9. Estrutura publicada e verificada no GitHub
+
+> **Conferido em 16/11/2026:** os arquivos abaixo existem na branch `main`. Uma instalação local ainda requer executar `git pull --ff-only` e instalar/autenticar as skills oficiais n8n e MCP conforme as seções anteriores.
+
+```text
+CLAUDE.md                                 # Memória operacional Claude Code
+AGENTS.md                                 # Memória operacional Codex
+.claude/skills/exia-agentes-n8n/SKILL.md  # Skill privada Claude Code
+.agents/skills/exia-agentes-n8n/SKILL.md  # Skill privada Codex
+bases/varejo/prompt.md                    # Prompt de referência distribuidora
+bases/varejo/workflow.json                # Workflow 48 nodes, saneado
+bases/servicos/prompt.md                  # Prompt referência prestadora de serviços
+bases/servicos/workflow.json              # Workflow 51 nodes, saneado
+standards/economia-tokens.md
+standards/seguranca.md
+standards/metodologia-bspa.md
+standards/testes.md
+modules/envio-imagens/README.md
+templates/briefing-cliente.md
+```
+
+**Sanitização dos workflows:** removidas referências de credenciais n8n, IDs de webhook, pinData, metadados da instância e URLs específicas de endpoints operacionais. Os arquivos continuam referências de arquitetura, mas **não são deploys prontos para executar**: configure e homologue todas as conexões antes de usar.
+
+### Para atualizar sua cópia local
+
+```bash
+cd ~/Exia/agentes-conversa-N8n
+git pull --ff-only
+ls -la CLAUDE.md AGENTS.md .claude/skills/exia-agentes-n8n/SKILL.md .agents/skills/exia-agentes-n8n/SKILL.md
+```
+
+Depois inicie `claude` ou `codex` na raiz do repositório e solicite um **diagnóstico somente de leitura** antes de permitir alterações em workflows remotos.
